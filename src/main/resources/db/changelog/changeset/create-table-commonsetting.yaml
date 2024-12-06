@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20241206_1029
+      author: SnowReplicator
+      changes:
+        - createTable:
+            tableName: commonsetting
+            columns:
+              - column:
+                  name: option
+                  type: text
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  remarks: "идентификатор настройки"
+              - column:
+                  name: value
+                  type: text
+                  constraints:
+                    nullable: true
+                  remarks: "значение настройки"
+        - setTableRemarks:
+            tableName: commonsetting
+            remarks: "Таблица для хранения настроек сервиса"
+        #
+        # первоначальное заполнение таблицы данными (вставка данных)
+        # настройка дефалтовой локали
+        #
+        - insert:
+            tableName: commonsetting
+            columns:
+              - column:
+                  name: option
+                  value: "DefaultLocale"
+              - column:
+                  name: value
+                  value: "ru-RU"
+        # настройка списка доступных локалей
+        - insert:
+            tableName: commonsetting
+            columns:
+              - column:
+                  name: option
+                  value: "AvailableLocales"
+              - column:
+                  name: value
+                  value: "ru-RU,en-US"

@@ -1,0 +1,6 @@
+------------------------------------------------
+
+ EnoviaTrainingService
+
+ :: Spring Boot :: ${spring-boot.formatted-version}
+------------------------------------------------
